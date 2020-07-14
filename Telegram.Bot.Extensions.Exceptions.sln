@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30223.230
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{733A6C0B-5E6B-4496-8762-77C5EEEB2250}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegram.Bot.Extensions.Exceptions", "src\Telegram.Bot.Extensions.Exceptions\Telegram.Bot.Extensions.Exceptions.csproj", "{1A287AFD-89FA-4774-8D20-FC3CBD41EF32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{751F7B40-DF5D-459A-9F9C-2FC08D23E304}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AE0FDC0A-6768-482D-815D-7479F996592E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegram.Bot.Tests.Integ", "test\Telegram.Bot.Tests.Integ\Telegram.Bot.Tests.Integ.csproj", "{807E7B30-702D-46A9-8441-348BAFA80CBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +26,17 @@ Global
 		{1A287AFD-89FA-4774-8D20-FC3CBD41EF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A287AFD-89FA-4774-8D20-FC3CBD41EF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A287AFD-89FA-4774-8D20-FC3CBD41EF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{807E7B30-702D-46A9-8441-348BAFA80CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{807E7B30-702D-46A9-8441-348BAFA80CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{807E7B30-702D-46A9-8441-348BAFA80CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{807E7B30-702D-46A9-8441-348BAFA80CBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1A287AFD-89FA-4774-8D20-FC3CBD41EF32} = {733A6C0B-5E6B-4496-8762-77C5EEEB2250}
+		{807E7B30-702D-46A9-8441-348BAFA80CBE} = {751F7B40-DF5D-459A-9F9C-2FC08D23E304}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D75EC9A-A6F0-43A7-A0A8-BCC212AA272D}
