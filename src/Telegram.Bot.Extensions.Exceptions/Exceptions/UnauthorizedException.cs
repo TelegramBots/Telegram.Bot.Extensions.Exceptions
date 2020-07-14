@@ -4,7 +4,7 @@ using Telegram.Bot.Types;
 namespace Telegram.Bot.Exceptions
 {
     /// <summary>
-    /// Represents an error from Bot API with 403 Forbidden HTTP status
+    /// Represents an error from Bot API with 401 Unauthorized HTTP status
     /// </summary>
     public class UnauthorizedException : ApiRequestException
     {

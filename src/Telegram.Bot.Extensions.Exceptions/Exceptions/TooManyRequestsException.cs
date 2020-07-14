@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 namespace Telegram.Bot.Exceptions
 {
     /// <summary>
-    ///
+    /// Represents an error from Bot API with 429 Too Many Requests HTTP status
     /// </summary>
     public class TooManyRequestsException : ApiRequestException
     {

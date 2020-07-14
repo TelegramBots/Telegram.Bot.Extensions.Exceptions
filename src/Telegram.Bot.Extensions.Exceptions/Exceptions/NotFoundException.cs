@@ -3,6 +3,9 @@ using Telegram.Bot.Types;
 
 namespace Telegram.Bot.Extensions.Exceptions.Exceptions
 {
+    /// <summary>
+    /// Represents an error from Bot API with 404 Not Found HTTP status
+    /// </summary>
     public class NotFoundException : ApiRequestException
     {
         /// <inheritdoc />
