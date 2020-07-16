@@ -39,6 +39,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BadRequestException\Invalid Parameter\" />
-    <Folder Include="TooManyRequestsException\" />
   </ItemGroup>
 </Project>
