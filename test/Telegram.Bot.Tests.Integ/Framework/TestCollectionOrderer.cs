@@ -14,14 +14,11 @@ namespace Telegram.Bot.Tests.Integ.Framework
             // Tests that require user interaction:
 
             // Tests without the need for user interaction:
+            Constants.TestCollections.BadRequestException,
+            Constants.TestCollections.ForbiddenException,
             Constants.TestCollections.NotFoundException,
-            Constants.TestCollections.BadRequest,
-
-            // ToDO
-            Constants.TestCollections.Payment,
-            Constants.TestCollections.Stickers,
-            Constants.TestCollections.ChannelAdminBots,
-            Constants.TestCollections.ChatMemberAdministration,
+            Constants.TestCollections.TooManyRequestsException,
+            Constants.TestCollections.UnauthorizedException,
         };
 
         public IEnumerable<ITestCollection> OrderTestCollections(IEnumerable<ITestCollection> testCollections)
