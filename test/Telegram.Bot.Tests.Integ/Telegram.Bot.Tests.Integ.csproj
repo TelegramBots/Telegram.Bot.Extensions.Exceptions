@@ -5,10 +5,10 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -18,7 +18,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Telegram.Bot" Version="15.7.1-ci.95" />
+    <PackageReference Include="Telegram.Bot" Version="15.7.1-ci.121" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.Development.json">
@@ -36,5 +36,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Telegram.Bot.Extensions.Exceptions\Telegram.Bot.Extensions.Exceptions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BadRequestException\Invalid Parameter\" />
+    <Folder Include="TooManyRequestsException\" />
   </ItemGroup>
 </Project>
