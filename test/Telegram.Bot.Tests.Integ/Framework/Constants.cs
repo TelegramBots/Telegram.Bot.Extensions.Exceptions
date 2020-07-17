@@ -25,12 +25,6 @@ namespace Telegram.Bot.Tests.Integ.Framework
             public const string NotFoundException = "NotFoundException";
             public const string TooManyRequestsException = "TooManyRequestsException";
             public const string UnauthorizedException = "UnauthorizedException";
-
-            // ToDO
-            public const string Payment = "Payment";
-            public const string Stickers = "Stickers";
-            public const string ChannelAdminBots = "ChannelAdminBots";
-            public const string ChatMemberAdministration = "ChatMemberAdministration";
         }
 
         public static class PathToFile
@@ -40,7 +34,6 @@ namespace Telegram.Bot.Tests.Integ.Framework
             public static class Photos
             {
                 private const string PhotoDir = FilesDir + "Photo/";
-
 
                 public const string Logo = PhotoDir + "logo.png";
 
