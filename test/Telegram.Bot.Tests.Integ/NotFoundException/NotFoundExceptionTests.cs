@@ -1,7 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
+using Telegram.Bot.Exceptions;
 using Telegram.Bot.Extensions.Exceptions;
-using Telegram.Bot.Extensions.Exceptions.Exceptions;
 using Telegram.Bot.Tests.Integ.Framework;
 using Xunit;
 

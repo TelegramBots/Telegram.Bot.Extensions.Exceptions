@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Telegram.Bot.Exceptions;
-using Telegram.Bot.Extensions.Exceptions.Exceptions;
-using Telegram.Bot.Types;
 using Telegram.Bot.Extensions.Exceptions.Parsing;
+using Telegram.Bot.Types;
 
 namespace Telegram.Bot.Extensions.Exceptions
 {
