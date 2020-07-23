@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Tests.Integ.Framework;
@@ -23,15 +22,15 @@ namespace Telegram.Bot.Tests.Integ.TooManyRequests
         [OrderedFact("Should throw TooManyRequestsException")]
         public async Task Should_Throw_TooManyRequestsException()
         {
-            List<Task> requestTasks = new List<Task>();
-            for (int i = 0; i < 250; i++)
+            const int parallelTaskCount = 250;
+            Task[] requestTasks = new Task[parallelTaskCount];
+            for (int i = 0; i < parallelTaskCount; i++)
             {
-                Task task = Task.Run(async () =>
+                requestTasks[i] = Task.Run(async () =>
                 {
                     Message message = await BotClient.SendTextMessageAsync(Fixture.SupergroupChat, "testmessage");
                     await BotClient.DeleteMessageAsync(Fixture.SupergroupChat, message.MessageId);
                 });
-                requestTasks.Add(task);
             }
 
             TooManyRequestsException exception = await Assert.ThrowsAsync<TooManyRequestsException>(
@@ -40,8 +39,7 @@ namespace Telegram.Bot.Tests.Integ.TooManyRequests
 
             Assert.Equal(429, exception.ErrorCode);
             Assert.Contains("Too Many Requests: retry after", exception.Message);
-            // ToDo: parse error message
-            // Assert.NotEqual(0, exception.RetryAfter)
+            Assert.NotEqual(0, exception.Parameters.RetryAfter);
         }
     }
 }
