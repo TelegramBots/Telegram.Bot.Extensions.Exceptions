@@ -109,7 +109,10 @@ namespace Telegram.Bot.Extensions.Exceptions
                     responseParameters,
                     out exception))
                 {
-                    return exception;
+                    return exception ?? throw new InvalidOperationException(
+                        $"Descriptor for '{descriptor.Type.Name}' exception returned null. Parsed " +
+                        "exception must not be null if TryParseException returned true."
+                    );
                 }
             }
 
