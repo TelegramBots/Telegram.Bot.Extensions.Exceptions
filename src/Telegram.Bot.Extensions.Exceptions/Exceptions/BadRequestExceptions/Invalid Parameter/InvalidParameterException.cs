@@ -20,19 +20,6 @@ namespace Telegram.Bot.Exceptions
         /// </summary>
         /// <param name="paramName">Name of parameter</param>
         /// <param name="message">Message of the exception</param>
-        public InvalidParameterException(
-            string paramName,
-            string message)
-            : base(message)
-        {
-            Parameter = paramName;
-        }
-
-        /// <summary>
-        /// Initializes a new object of the <see cref="InvalidParameterException"/> class
-        /// </summary>
-        /// <param name="paramName">Name of parameter</param>
-        /// <param name="message">Message of the exception</param>
         /// <param name="parameters">Response parameters</param>
         public InvalidParameterException(
             string paramName,

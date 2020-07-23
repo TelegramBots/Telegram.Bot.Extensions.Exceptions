@@ -12,14 +12,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new object of the <see cref="InvalidStickerEmojisException"/> class
         /// </summary>
         /// <param name="message">The error message of this exception.</param>
-        public InvalidStickerEmojisException(string message)
-            : base("emojis", message)
-        { }
-
-        /// <summary>
-        /// Initializes a new object of the <see cref="InvalidStickerEmojisException"/> class
-        /// </summary>
-        /// <param name="message">The error message of this exception.</param>
         /// <param name="parameters">Response parameters</param>
         public InvalidStickerEmojisException(
             string message,

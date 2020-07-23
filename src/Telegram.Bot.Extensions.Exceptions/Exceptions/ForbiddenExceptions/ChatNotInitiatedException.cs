@@ -13,14 +13,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new object of the <see cref="ChatNotInitiatedException"/> class
         /// </summary>
         /// <param name="message">The message of this exception</param>
-        public ChatNotInitiatedException(string message)
-            : base(message)
-        { }
-
-        /// <summary>
-        /// Initializes a new object of the <see cref="ChatNotInitiatedException"/> class
-        /// </summary>
-        /// <param name="message">The message of this exception</param>
         /// <param name="parameters">Response parameters</param>
         public ChatNotInitiatedException(
             string message,

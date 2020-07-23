@@ -20,14 +20,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new instance of the <see cref="UnauthorizedException"/> class
         /// </summary>
         /// <param name="message">The message</param>
-        public UnauthorizedException(string message)
-            : base(message, UnauthorizedErrorCode)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnauthorizedException"/> class
-        /// </summary>
-        /// <param name="message">The message</param>
         /// <param name="parameters">Response parameters</param>
         public UnauthorizedException(string message, ResponseParameters? parameters = default)
             : base(message, UnauthorizedErrorCode, parameters)

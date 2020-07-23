@@ -12,14 +12,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new object of the <see cref="InvalidStickerSetNameException"/> class
         /// </summary>
         /// <param name="message">The error message of this exception.</param>
-        public InvalidStickerSetNameException(string message)
-            : base("name", message)
-        { }
-
-        /// <summary>
-        /// Initializes a new object of the <see cref="InvalidStickerSetNameException"/> class
-        /// </summary>
-        /// <param name="message">The error message of this exception.</param>
         /// <param name="parameters">Response parameters</param>
         public InvalidStickerSetNameException(string message, ResponseParameters? parameters = default)
             : base("name", message, parameters)

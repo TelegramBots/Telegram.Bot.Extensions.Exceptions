@@ -19,14 +19,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new instance of the <see cref="NotFoundException"/> class
         /// </summary>
         /// <param name="message">The message</param>
-        public NotFoundException(string message)
-            : base(message, NotFoundErrorCode)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NotFoundException"/> class
-        /// </summary>
-        /// <param name="message">The message</param>
         /// <param name="parameters">Response parameters</param>
         public NotFoundException(string message, ResponseParameters? parameters = default)
             : base(message, NotFoundErrorCode, parameters)

@@ -13,14 +13,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new object of the <see cref="InvalidQueryIdException"/> class
         /// </summary>
         /// <param name="message">The error message of this exception.</param>
-        public InvalidQueryIdException(string message)
-            : base("inline_query_id", message)
-        { }
-
-        /// <summary>
-        /// Initializes a new object of the <see cref="InvalidQueryIdException"/> class
-        /// </summary>
-        /// <param name="message">The error message of this exception.</param>
         /// <param name="parameters">Response parameters</param>
         public InvalidQueryIdException(string message, ResponseParameters? parameters = default)
             : base("inline_query_id", message, parameters)

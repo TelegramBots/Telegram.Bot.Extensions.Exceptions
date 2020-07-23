@@ -20,14 +20,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new instance of the <see cref="TooManyRequestsException"/> class
         /// </summary>
         /// <param name="message">The message</param>
-        public TooManyRequestsException(string message)
-            : base(message, TooManyRequestsErrorCode)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TooManyRequestsException"/> class
-        /// </summary>
-        /// <param name="message">The message</param>
         /// <param name="parameters">Response parameters</param>
         public TooManyRequestsException(string message, ResponseParameters? parameters = default)
             : base(message, TooManyRequestsErrorCode, parameters)

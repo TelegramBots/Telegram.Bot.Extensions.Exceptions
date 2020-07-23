@@ -20,14 +20,6 @@ namespace Telegram.Bot.Exceptions
         /// Initializes a new instance of the <see cref="BadRequestException"/> class
         /// </summary>
         /// <param name="message">The message</param>
-        public BadRequestException(string message)
-            : base(message, BadRequestErrorCode)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BadRequestException"/> class
-        /// </summary>
-        /// <param name="message">The message</param>
         /// <param name="parameters">Response parameters</param>
         public BadRequestException(string message, ResponseParameters? parameters = default)
             : base(message, BadRequestErrorCode, parameters)
