@@ -39,6 +39,8 @@ namespace Telegram.Bot.Tests.Integ.BadRequest
                     .GetInfoAndDownloadFileAsync(Chat.Photo.BigFileId, stream);
 
                 _oldChatPhoto = stream.ToArray();
+
+                await _fixture.BotClient.DeleteChatPhotoAsync(Chat);
             }
         }
 

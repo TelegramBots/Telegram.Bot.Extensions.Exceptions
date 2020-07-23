@@ -11,32 +11,15 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2" PrivateAssets="all" />
     <PackageReference Include="Telegram.Bot" Version="15.7.1-ci.121" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="appsettings.Development.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="xunit.runner.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Update="appsettings.Development.json" CopyToOutputDirectory="Always" />
+    <None Update="xunit.runner.json" CopyToOutputDirectory="Always" />
     <None Include="Files/**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Telegram.Bot.Extensions.Exceptions\Telegram.Bot.Extensions.Exceptions.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BadRequestException\Invalid Parameter\" />
   </ItemGroup>
 </Project>

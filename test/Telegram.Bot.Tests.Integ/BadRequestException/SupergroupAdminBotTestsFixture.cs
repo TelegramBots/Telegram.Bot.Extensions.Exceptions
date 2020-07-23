@@ -33,6 +33,8 @@ namespace Telegram.Bot.Tests.Integ.Admin_Bot
                     .GetInfoAndDownloadFileAsync(chat.Photo.BigFileId, stream);
 
                 _oldChatPhoto = stream.ToArray();
+
+                await TestsFixture.BotClient.DeleteChatPhotoAsync(TestsFixture.SupergroupChat);
             }
 
             // Save default permissions so they can be restored
