@@ -22,7 +22,7 @@ namespace Telegram.Bot.Extensions.Exceptions
             #region Stickers
 
             new BadRequestExceptionDescriptor<InvalidStickerSetNameException>(
-                "sticker set name invalid"
+                "invalid sticker set name is specified"
             ),
             new BadRequestExceptionDescriptor<InvalidStickerEmojisException>(
                 "invalid sticker emojis"
