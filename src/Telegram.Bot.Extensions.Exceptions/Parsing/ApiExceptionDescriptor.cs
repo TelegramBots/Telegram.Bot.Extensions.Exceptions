@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
@@ -23,7 +24,7 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
             int errorCode,
             string description,
             ResponseParameters? responseParameters,
-            out ApiRequestException? exception)
+            [NotNullWhen(true)] out ApiRequestException? exception)
         {
             exception = null;
 
