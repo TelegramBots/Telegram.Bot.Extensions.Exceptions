@@ -8,6 +8,7 @@ using Telegram.Bot.Types;
 
 namespace Telegram.Bot.Extensions.Exceptions
 {
+    /// <inheritdoc />
     public class ExceptionParser : IExceptionParser
     {
         private static readonly IApiExceptionDescriptor[] ExceptionDescriptors =
@@ -89,6 +90,10 @@ namespace Telegram.Bot.Extensions.Exceptions
             _exceptionDescriptors = exceptionDescriptors.ToArray();
         }
 
+        /// <inheritdoc />
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when one of the parsers violate the contract and returns <c>null</c>
+        /// </exception>
         public ApiRequestException Parse(
             int errorCode,
             string description,
@@ -137,13 +142,17 @@ namespace Telegram.Bot.Extensions.Exceptions
             string description,
             ResponseParameters? responseParameter)
         {
-            var paramName = Regex.Match(description, errorMessageRegex)
+            var paramName = Regex.Match(description, errorMessageRegex, RegexOptions.IgnoreCase)
                 .Groups[InvalidParameterException.ParamGroupName]
                 .Value;
 
             return new InvalidParameterException(paramName, description);
         }
 
+        /// <summary>
+        /// Creates a default implementation of <see cref="IExceptionParser"/>
+        /// </summary>
+        /// <returns>An instance of <see cref="ExceptionParser"/></returns>
         public static IExceptionParser CreateDefault() => new ExceptionParser(ExceptionDescriptors);
     }
 }

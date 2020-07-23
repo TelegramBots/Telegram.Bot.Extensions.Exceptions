@@ -9,6 +9,8 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
     internal class ApiExceptionDescriptor<TException> : IApiExceptionDescriptor
         where TException : ApiRequestException
     {
+        private readonly Regex _regex;
+
         public int ErrorCode { get; }
         public string ErrorMessageRegex { get; }
         public Type Type => typeof(TException);
@@ -16,6 +18,8 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
 
         public ApiExceptionDescriptor(int errorCode, string errorMessageRegex)
         {
+            _regex = new Regex(errorMessageRegex, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
             ErrorCode = errorCode;
             ErrorMessageRegex = errorMessageRegex;
         }
@@ -28,8 +32,10 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
         {
             exception = null;
 
-            if (ErrorCode != errorCode || !Regex.IsMatch(description, ErrorMessageRegex))
+            if (ErrorCode != errorCode || !_regex.IsMatch(description))
+            {
                 return false;
+            }
 
             exception = CustomExceptionFactory?.Invoke(
                 ErrorMessageRegex,
@@ -44,7 +50,7 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
                 responseParameters
             );
 
-            return !(exception is null);
+            return true;
         }
     }
 }
