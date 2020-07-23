@@ -7,7 +7,7 @@ namespace Telegram.Bot.Tests.Integ.BadRequest
 {
     [Collection(Constants.TestCollections.BadRequestException)]
     [TestCaseOrderer(Constants.TestCaseOrderer, Constants.AssemblyName)]
-    public class ChannelAdminBotTests : IClassFixture<ChannelAdminBotTestFixture>
+    public class BadRequestException_ChannelAdminBotTests : IClassFixture<ChannelAdminBotTestFixture>
     {
         private readonly ChannelAdminBotTestFixture _classFixture;
 
@@ -15,7 +15,7 @@ namespace Telegram.Bot.Tests.Integ.BadRequest
 
         private ITelegramBotClient BotClient => _fixture.BotClient;
 
-        public ChannelAdminBotTests(TestsFixture testsFixture, ChannelAdminBotTestFixture classFixture)
+        public BadRequestException_ChannelAdminBotTests(TestsFixture testsFixture, ChannelAdminBotTestFixture classFixture)
         {
             _fixture = testsFixture;
             _classFixture = classFixture;

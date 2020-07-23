@@ -7,13 +7,13 @@ namespace Telegram.Bot.Tests.Integ.Admin_Bot
 {
     [Collection(Constants.TestCollections.BadRequestException)]
     [TestCaseOrderer(Constants.TestCaseOrderer, Constants.AssemblyName)]
-    public class SupergroupAdminBotTests : IClassFixture<SupergroupAdminBotTestsFixture>
+    public class BadRequestException_SupergroupAdminBotTests : IClassFixture<SupergroupAdminBotTestsFixture>
     {
         private readonly SupergroupAdminBotTestsFixture _classFixture;
 
         private ITelegramBotClient BotClient => _classFixture.TestsFixture.BotClient;
 
-        public SupergroupAdminBotTests(SupergroupAdminBotTestsFixture classFixture)
+        public BadRequestException_SupergroupAdminBotTests(SupergroupAdminBotTestsFixture classFixture)
         {
             _classFixture = classFixture;
         }

@@ -15,9 +15,9 @@ namespace Telegram.Bot.Tests.Integ.Interactive.BadRequest
     [Collection(Constants.TestCollections.BadRequestException)]
     [Trait(Constants.CategoryTraitName, Constants.InteractiveCategoryValue)]
     [TestCaseOrderer(Constants.TestCaseOrderer, Constants.AssemblyName)]
-    public class InteractiveBadRequestExceptionTests :
-        IClassFixture<InteractiveBadRequestExceptionTests.PrivateChatFixture>,
-        IClassFixture<InteractiveBadRequestExceptionTests.PaymentFixture>
+    public class Interactive_BadRequestExceptionTests :
+        IClassFixture<Interactive_BadRequestExceptionTests.PrivateChatFixture>,
+        IClassFixture<Interactive_BadRequestExceptionTests.PaymentFixture>
     {
         private PrivateChatFixture Fixture { get; }
 
@@ -27,7 +27,7 @@ namespace Telegram.Bot.Tests.Integ.Interactive.BadRequest
 
         private ITelegramBotClient BotClient => TestsFixture.BotClient;
 
-        public InteractiveBadRequestExceptionTests(
+        public Interactive_BadRequestExceptionTests(
             TestsFixture testsFixture,
             PrivateChatFixture classFixture,
             PaymentFixture paymentFixture)

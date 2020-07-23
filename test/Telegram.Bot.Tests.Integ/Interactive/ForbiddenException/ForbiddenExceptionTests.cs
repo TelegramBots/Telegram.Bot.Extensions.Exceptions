@@ -11,13 +11,13 @@ namespace Telegram.Bot.Tests.Integ.Interactive.Forbidden
     [Collection(Constants.TestCollections.ForbiddenException)]
     [Trait(Constants.CategoryTraitName, Constants.InteractiveCategoryValue)]
     [TestCaseOrderer(Constants.TestCaseOrderer, Constants.AssemblyName)]
-    public class InteractiveForbiddenExceptionTests
+    public class Interactive_ForbiddenExceptionTests
     {
         private ITelegramBotClient BotClient => Fixture.BotClient;
 
         private TestsFixture Fixture { get; }
 
-        public InteractiveForbiddenExceptionTests(TestsFixture fixture)
+        public Interactive_ForbiddenExceptionTests(TestsFixture fixture)
         {
             Fixture = fixture;
         }
