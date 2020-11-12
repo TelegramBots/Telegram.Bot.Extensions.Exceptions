@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
@@ -11,10 +11,9 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
         string ErrorMessageRegex { get; }
         Type Type { get; }
 
-        bool TryParseException(
-            int errorCode,
-            string description,
-            ResponseParameters? responseParameters,
-            [NotNullWhen(true)] out ApiRequestException? exception);
+        bool TryParseException(int errorCode,
+                               string description,
+                               ResponseParameters? responseParameters,
+                               [NotNullWhen(true)] out ApiRequestException? exception);
     }
 }

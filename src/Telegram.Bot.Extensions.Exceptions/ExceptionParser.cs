@@ -94,20 +94,16 @@ namespace Telegram.Bot.Extensions.Exceptions
         /// <exception cref="InvalidOperationException">
         /// Thrown when one of the parsers violate the contract and returns <c>null</c>
         /// </exception>
-        public ApiRequestException Parse(
-            int errorCode,
-            string description,
-            ResponseParameters? responseParameters)
+        public ApiRequestException Parse(ApiResponse apiResponse)
         {
             ApiRequestException? exception;
 
             foreach (var descriptor in _exceptionDescriptors)
             {
-                if (descriptor.TryParseException(
-                    errorCode,
-                    description,
-                    responseParameters,
-                    out exception))
+                if (descriptor.TryParseException(apiResponse.ErrorCode,
+                                                 apiResponse.Description,
+                                                 apiResponse.Parameters,
+                                                 out exception))
                 {
                     return exception ?? throw new InvalidOperationException(
                         $"Descriptor for '{descriptor.Type.Name}' exception returned null. Parsed " +
@@ -116,24 +112,24 @@ namespace Telegram.Bot.Extensions.Exceptions
                 }
             }
 
-            exception = errorCode switch
+            exception = apiResponse.ErrorCode switch
             {
                 BadRequestException.BadRequestErrorCode =>
-                    new BadRequestException(description, responseParameters),
+                    new BadRequestException(apiResponse.Description, apiResponse.Parameters),
 
                 UnauthorizedException.UnauthorizedErrorCode =>
-                    new UnauthorizedException(description, responseParameters),
+                    new UnauthorizedException(apiResponse.Description, apiResponse.Parameters),
 
                 ForbiddenException.ForbiddenErrorCode =>
-                    new ForbiddenException(description, responseParameters),
+                    new ForbiddenException(apiResponse.Description, apiResponse.Parameters),
 
                 NotFoundException.NotFoundErrorCode =>
-                    new NotFoundException(description, responseParameters),
+                    new NotFoundException(apiResponse.Description, apiResponse.Parameters),
 
                 TooManyRequestsException.TooManyRequestsErrorCode =>
-                    new TooManyRequestsException(description, responseParameters),
+                    new TooManyRequestsException(apiResponse.Description, apiResponse.Parameters),
 
-                _ => new ApiRequestException(description, errorCode, responseParameters)
+                _ => new ApiRequestException(apiResponse.Description, apiResponse.ErrorCode, apiResponse.Parameters)
             };
 
             return exception;

@@ -16,7 +16,8 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
         public Type Type => typeof(TException);
         public ExceptionFactory<TException>? CustomExceptionFactory { get; set; }
 
-        public ApiExceptionDescriptor(int errorCode, string errorMessageRegex)
+        public ApiExceptionDescriptor(int errorCode,
+                                      string errorMessageRegex)
         {
             _regex = new Regex(errorMessageRegex, RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -24,11 +25,10 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
             ErrorMessageRegex = errorMessageRegex;
         }
 
-        public bool TryParseException(
-            int errorCode,
-            string description,
-            ResponseParameters? responseParameters,
-            [NotNullWhen(true)] out ApiRequestException? exception)
+        public bool TryParseException(int errorCode,
+                                      string description,
+                                      ResponseParameters? responseParameters,
+                                      [NotNullWhen(true)] out ApiRequestException? exception)
         {
             exception = null;
 
@@ -37,18 +37,14 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
                 return false;
             }
 
-            exception = CustomExceptionFactory?.Invoke(
-                ErrorMessageRegex,
-                errorCode,
-                description,
-                responseParameters
-            );
+            exception = CustomExceptionFactory?.Invoke(ErrorMessageRegex,
+                                                       errorCode,
+                                                       description,
+                                                       responseParameters);
 
-            exception ??= (ApiRequestException) Activator.CreateInstance(
-                Type,
-                description,
-                responseParameters
-            );
+            exception ??= (ApiRequestException) Activator.CreateInstance(Type,
+                                                                         description,
+                                                                         responseParameters);
 
             return true;
         }

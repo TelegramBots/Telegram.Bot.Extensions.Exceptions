@@ -21,14 +21,14 @@ namespace Telegram.Bot.Extensions.Exceptions.Tests.Unit
         [Fact]
         public void Should_Throw_InvalidOperationException_On_Null_Exception()
         {
-            var exceptionParser = new ExceptionParser(new [] { new MockApiExceptionDescriptor() });
+            var exceptionParser = new ExceptionParser(new[] { new MockApiExceptionDescriptor() });
 
             ApiRequestException? apiRequestException = default;
 
             var exception = Assert.Throws<InvalidOperationException>(
                 () =>
                 {
-                    apiRequestException = exceptionParser.Parse(default, default!, default);
+                    apiRequestException = exceptionParser.Parse(default!);
                 }
             );
 
