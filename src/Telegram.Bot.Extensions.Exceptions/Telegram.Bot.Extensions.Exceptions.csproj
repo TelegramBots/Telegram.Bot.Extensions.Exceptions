@@ -1,14 +1,51 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <OutputType>Library</OutputType>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>0.0.1</Version>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>0.1.0-alpha.1</Version>
+    <PackageId>Telegram.Bot.Extensions.Exceptions</PackageId>
+    <Authors>TelegramBots,tuscen</Authors>
+    <Company>TelegramBots</Company>
+    <PackageIcon>package-icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/TelegramBots/Telegram.Bot.Extensions.Exceptions</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/TelegramBots/Telegram.Bot.Extensions.Exceptions.git</RepositoryUrl>
+    <PackageTags>Telegram;Bot;Api;Exceptions</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Title>Telegram Bot API Client Exceptions Extensions</Title>
+    <Description>Provides extended exceptions handling to the Telegram.Bot package.</Description>
+
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>
+      $(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb
+    </AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Telegram.Bot" Version="15.7.1-ci.168" />
+    <None Include="../../package-icon.png">
+      <Pack>true</Pack>
+      <PackagePath>/</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <!-- Make build deterministic only in CI environment to make local development easier with non-trimmed paths -->
+  <!-- TF_BUILD is a predefined variable in Azure Pipelines -->
+  <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Telegram.Bot" Version="17.0.0-alpha.3" />
     <PackageReference Include="Nullable" Version="1.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
