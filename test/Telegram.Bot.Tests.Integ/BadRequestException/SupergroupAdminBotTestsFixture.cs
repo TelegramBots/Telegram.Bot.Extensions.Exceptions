@@ -38,7 +38,7 @@ namespace Telegram.Bot.Tests.Integ.Admin_Bot
             }
 
             // Save default permissions so they can be restored
-            ExistingDefaultPermissions = chat.Permissions;
+            ExistingDefaultPermissions = chat.Permissions!;
         }
 
         public async Task DisposeAsync()
