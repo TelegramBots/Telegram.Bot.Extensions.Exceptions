@@ -8,12 +8,14 @@ using Telegram.Bot.Types;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
+#nullable enable
+
 namespace Telegram.Bot.Tests.Integ.Framework
 {
     internal class RetryHttpMessageHandler : HttpClientHandler
     {
-        private readonly int _retryCount;
-        private readonly IMessageSink _diagnosticMessageSink;
+        readonly int _retryCount;
+        readonly IMessageSink _diagnosticMessageSink;
 
         internal RetryHttpMessageHandler(int retryCount, IMessageSink diagnosticMessageSink)
         {
@@ -25,7 +27,7 @@ namespace Telegram.Bot.Tests.Integ.Framework
             HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
-            HttpResponseMessage httpResponseMessage = default;
+            HttpResponseMessage? httpResponseMessage = default;
 
             for (var i = 0; i < _retryCount; i++)
             {
@@ -38,31 +40,27 @@ namespace Telegram.Bot.Tests.Integ.Framework
 
                 _diagnosticMessageSink.OnMessage(new DiagnosticMessage("Request was rate limited"));
 
-                var body = await httpResponseMessage.Content.ReadAsStringAsync();
+                var body = await httpResponseMessage.Content.ReadAsStringAsync(cancellationToken);
 
                 // Deserializing with an arbitrary type parameter since Result property should
                 // be empty at this stage
                 var apiResponse = JsonConvert.DeserializeObject<ApiResponse<int>>(body);
 
-                if (apiResponse.Parameters != null)
+                if (apiResponse.Parameters is not null)
                 {
-                    var seconds = apiResponse.Parameters.RetryAfter;
-                    // 30 seconds are chosen because it's a an average amount of that has
-                    // been seen in integration tests
-                    int effectiveSeconds = seconds ?? 30;
+                    const int mandatoryDelay = 30;
+                    var seconds = apiResponse.Parameters.RetryAfter ?? mandatoryDelay;
 
                     _diagnosticMessageSink.OnMessage(
-                        new DiagnosticMessage(
-                            $"Retry attempt {i + 1}. Waiting for {effectiveSeconds} seconds before retrying."
-                        )
+                        new DiagnosticMessage($"Retry attempt {i + 1}. Waiting for {seconds} seconds before retrying.")
                     );
 
-                    var timeToWait = TimeSpan.FromSeconds(effectiveSeconds);
+                    var timeToWait = TimeSpan.FromSeconds(seconds);
                     await Task.Delay(timeToWait, cancellationToken);
                 }
             }
 
-            return httpResponseMessage;
+            return httpResponseMessage!;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Telegram.Bot.Tests.Integ.Framework
             }
         }
 
-        private int FindExecutionOrder(ITestCollection collection)
+        int FindExecutionOrder(ITestCollection collection)
         {
             int? order = null;
             for (int i = 0; i < _orderedCollections.Length; i++)
