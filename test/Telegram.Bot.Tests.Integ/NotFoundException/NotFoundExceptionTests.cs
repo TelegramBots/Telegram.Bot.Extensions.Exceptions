@@ -28,7 +28,7 @@ namespace Telegram.Bot.Tests.Integ.NotFound
             const string botToken = "0:1this_is_an-invalid-token_for_tests";
             ITelegramBotClient botClient = new TelegramBotClient(botToken)
             {
-                ExceptionParser = ExceptionParser.CreateDefault()
+                ExceptionsParser = ExceptionParser.CreateDefault()
             };
 
             NotFoundException exception = await Assert.ThrowsAsync<NotFoundException>(
