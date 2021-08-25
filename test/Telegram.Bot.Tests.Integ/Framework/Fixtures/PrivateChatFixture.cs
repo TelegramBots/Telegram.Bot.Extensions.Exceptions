@@ -36,7 +36,7 @@ namespace Telegram.Bot.Tests.Integ.Framework.Fixtures
             {
                 await testsFixture.UpdateReceiver.DiscardNewUpdatesAsync();
 
-                string botUsername = testsFixture.BotUser.GetSafeUsername();
+                string? botUsername = testsFixture.BotUser.GetSafeUsername();
                 await testsFixture.SendTestCollectionNotificationAsync(collectionName,
                     $"No value is set for `{nameof(ConfigurationProvider.TestConfigurations.TesterPrivateChatId)}` in test " +
                     $"settings. Tester should send /test command in private chat with @{botUsername}."

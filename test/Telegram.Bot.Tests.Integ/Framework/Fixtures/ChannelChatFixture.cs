@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -38,7 +38,7 @@ namespace Telegram.Bot.Tests.Integ.Framework.Fixtures
 
             await _testsFixture.UpdateReceiver.DiscardNewUpdatesAsync();
 
-            string botUserName = _testsFixture.BotUser.GetSafeUsername();
+            string? botUserName = _testsFixture.BotUser.GetSafeUsername();
             await _testsFixture.SendTestCollectionNotificationAsync(collectionName,
                 "No channel is set in test settings. Tester should forward a message from a channel " +
                 $"so bot can run tests there. @{botUserName} must be an admin in that channel."

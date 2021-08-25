@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot.Args;
+using Telegram.Bot.Extensions.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -169,7 +170,10 @@ namespace Telegram.Bot.Tests.Integ.Framework
 
             var httpClientHandler = new RetryHttpMessageHandler(3, _diagnosticMessageSink);
             var httpClient = new HttpClient(httpClientHandler);
-            BotClient = new TelegramBotClient(apiToken, httpClient);
+            BotClient = new TelegramBotClient(apiToken, httpClient)
+            {
+                ExceptionsParser = ExceptionParser.CreateDefault()
+            };
 
             var allowedUserNames = await WithCancellation(
                 async token =>

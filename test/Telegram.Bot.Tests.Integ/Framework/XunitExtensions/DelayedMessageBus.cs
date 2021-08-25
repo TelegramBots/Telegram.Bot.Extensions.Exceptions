@@ -41,7 +41,7 @@ namespace Telegram.Bot.Tests.Integ.Framework.XunitExtensions
         /// <summary>
         /// Retrieve TestFailed message from IMessageSinkMessage list.
         /// </summary>
-        public TestFailed FailedMessages
+        public TestFailed? FailedMessages
         {
             get
             {
