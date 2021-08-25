@@ -33,14 +33,14 @@ namespace Telegram.Bot.Tests.Integ.BadRequest
 
         [OrderedFact("Should throw BadRequestException")]
         [Trait(Constants.MethodTraitName, Constants.TelegramBotApiMethods.GetChatMember)]
-        public async Task Should_Throw_BadRequestExceptionn()
+        public async Task Should_Throw_InvalidParameterException()
         {
-            BadRequestException exception = await Assert.ThrowsAsync<BadRequestException>(
+            BadRequestException exception = await Assert.ThrowsAsync<InvalidParameterException>(
                 async () => await BotClient.GetChatMemberAsync(Fixture.SupergroupChat.Id, -100120232)
             );
 
             Assert.Equal(400, exception.ErrorCode);
-            Assert.Contains("wrong user_id specified", exception.Message);
+            Assert.Contains("invalid user_id specified", exception.Message);
         }
 
         [OrderedFact("Should throw ChatNotFoundException while trying to send message to an invalid chat")]
