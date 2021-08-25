@@ -60,7 +60,7 @@ namespace Telegram.Bot.Tests.Integ.Interactive.BadRequest
 
             Update queryUpdate = await TestsFixture.UpdateReceiver.GetInlineQueryUpdateAsync();
 
-            InlineQueryResultBase[] results =
+            InlineQueryResult[] results =
             {
                 new InlineQueryResultArticle(
                     id: "article:bot-api",
