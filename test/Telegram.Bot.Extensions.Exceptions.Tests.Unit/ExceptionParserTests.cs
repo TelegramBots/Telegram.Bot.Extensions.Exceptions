@@ -28,7 +28,8 @@ namespace Telegram.Bot.Extensions.Exceptions.Tests.Unit
             var exception = Assert.Throws<InvalidOperationException>(
                 () =>
                 {
-                    apiRequestException = exceptionParser.Parse(default!);
+                    ApiResponse response = new(100, "", null);
+                    apiRequestException = exceptionParser.Parse(response);
                 }
             );
 
