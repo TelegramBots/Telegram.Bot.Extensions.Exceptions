@@ -1,6 +1,7 @@
 #nullable enable
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Extensions.Exceptions.Parsing;
 using Telegram.Bot.Types;
@@ -49,9 +50,9 @@ namespace Telegram.Bot.Extensions.Exceptions.Tests.Unit
             int errorCode,
             string description,
             ResponseParameters? responseParameters,
-            out ApiRequestException? exception)
+            [NotNullWhen(true)] out ApiRequestException? exception)
         {
-            exception = null;
+            exception = null!;
             return true;
         }
     }
