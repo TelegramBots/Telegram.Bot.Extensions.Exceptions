@@ -39,7 +39,7 @@ namespace Telegram.Bot.Tests.Integ.TooManyRequests
 
             Assert.Equal(429, exception.ErrorCode);
             Assert.Contains("Too Many Requests: retry after", exception.Message);
-            Assert.NotEqual(0, exception.Parameters.RetryAfter);
+            Assert.NotEqual(0, exception.Parameters?.RetryAfter);
         }
     }
 }

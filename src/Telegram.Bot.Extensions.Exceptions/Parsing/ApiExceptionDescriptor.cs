@@ -42,9 +42,9 @@ namespace Telegram.Bot.Extensions.Exceptions.Parsing
                                                        description,
                                                        responseParameters);
 
-            exception ??= (ApiRequestException) Activator.CreateInstance(Type,
-                                                                         description,
-                                                                         responseParameters);
+            exception ??= (ApiRequestException)Activator.CreateInstance(Type,
+                                                                        description,
+                                                                        responseParameters)!;
 
             return true;
         }

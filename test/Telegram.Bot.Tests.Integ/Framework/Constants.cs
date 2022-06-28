@@ -18,6 +18,12 @@ namespace Telegram.Bot.Tests.Integ.Framework
         public const string TestCaseDiscoverer =
             AssemblyName + "." + nameof(Framework) + "." + nameof(XunitExtensions) + "." + nameof(RetryFactDiscoverer);
 
+        public const string TestCollectionOrderer =
+            AssemblyName + "." + nameof(Framework) + "." + nameof(TestCollectionOrderer);
+
+        public const string TestFramework =
+            AssemblyName + "." + nameof(Framework) + "." + nameof(XunitExtensions) + "." + nameof(XunitTestFrameworkWithAssemblyFixture);
+
         public static class TestCollections
         {
             public const string BadRequestException = "BadRequestException";
@@ -175,7 +181,13 @@ namespace Telegram.Bot.Tests.Integ.Framework
 
             public const string GetMyCommands = "getMyCommands";
 
+            public const string DeleteMyCommands = "deleteMyCommands";
+
             public const string SendDice = "sendDice";
+
+            public const string CopyMessage = "copyMessage";
+
+            public const string UnpinAllChatMessages = "unpinAllChatMessages";
         }
     }
 }

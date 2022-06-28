@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
 
         public string TestStickerSetName { get; }
 
-        public int OwnerUserId { get; private set; }
+        public long OwnerUserId { get; private set; }
 
         public StickersTestsFixture(TestsFixture testsFixture)
         {
@@ -38,9 +39,9 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             await AddStickersAsynd();
         }
 
-        private static async Task<int> GetStickerOwnerIdAsync(TestsFixture testsFixture, string collectionName)
+        private static async Task<long> GetStickerOwnerIdAsync(TestsFixture testsFixture, string collectionName)
         {
-            int ownerId;
+            long ownerId;
 
             if (ConfigurationProvider.TestConfigurations.StickerOwnerUserId == default)
             {
@@ -70,7 +71,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             }
             else
             {
-                ownerId = ConfigurationProvider.TestConfigurations.StickerOwnerUserId.Value;
+                ownerId = ConfigurationProvider.TestConfigurations.StickerOwnerUserId ?? throw new ArgumentNullException(nameof(ownerId));
             }
 
             return ownerId;
@@ -97,7 +98,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
         {
             try
             {
-                await BotClient.CreateNewStickerSetAsync(
+                await BotClient.CreateNewStaticStickerSetAsync(
                     userId: OwnerUserId,
                     name: TestStickerSetName,
                     title: "Test Sticker Set",
@@ -109,13 +110,11 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             {
                 await DeleteStickersAsync();
             }
-
-
         }
 
         private async Task AddStickersAsynd()
         {
-            await BotClient.AddStickerToSetAsync(
+            await BotClient.AddStaticStickerToSetAsync(
                 userId: OwnerUserId,
                 name: TestStickerSetName,
                 pngSticker: UploadedStickers.Last().FileId,
@@ -123,7 +122,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             );
 
             System.IO.Stream stream = System.IO.File.OpenRead(Constants.PathToFile.Photos.Vlc);
-            await BotClient.AddStickerToSetAsync(
+            await BotClient.AddStaticStickerToSetAsync(
                 userId: OwnerUserId,
                 name: TestStickerSetName,
                 pngSticker: stream,
