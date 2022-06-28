@@ -30,7 +30,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
         public async Task Should_Throw_InvalidStickerSetNameException()
         {
             InvalidStickerSetNameException exception = await Assert.ThrowsAsync<InvalidStickerSetNameException>(
-                async () => await BotClient.CreateNewStickerSetAsync(
+                async () => await BotClient.CreateNewStaticStickerSetAsync(
                     userId: _classFixture.OwnerUserId,
                     name: "Invalid_Sticker_Set_Name",
                     title: "Sticker Set Title",
@@ -49,7 +49,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
         public async Task Should_Throw_InvalidStickerEmojisException()
         {
             InvalidStickerEmojisException exception = await Assert.ThrowsAsync<InvalidStickerEmojisException>(
-                async () => await BotClient.CreateNewStickerSetAsync(
+                async () => await BotClient.CreateNewStaticStickerSetAsync(
                     userId: _classFixture.OwnerUserId,
                     name: "valid_name3" + _classFixture.TestStickerSetName,
                     title: "Sticker Set Title",
@@ -70,7 +70,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             // ToDo exception when sending jpeg file. Bad Request: STICKER_PNG_NOPNG
             await using System.IO.Stream stream = System.IO.File.OpenRead(Constants.PathToFile.Photos.Logo);
             InvalidStickerDimensionsException exception = await Assert.ThrowsAsync<InvalidStickerDimensionsException>(
-                async () => await BotClient.CreateNewStickerSetAsync(
+                async () => await BotClient.CreateNewStaticStickerSetAsync(
                     userId: _classFixture.OwnerUserId,
                     name: "valid_name2" + _classFixture.TestStickerSetName,
                     title: "Sticker Set Title",
@@ -90,7 +90,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
         {
             await using System.IO.Stream stream = System.IO.File.OpenRead(Constants.PathToFile.Photos.Ruby);
             StickerSetNameExistsException exception = await Assert.ThrowsAsync<StickerSetNameExistsException>(
-                async () => await BotClient.CreateNewStickerSetAsync(
+                async () => await BotClient.CreateNewStaticStickerSetAsync(
                     userId: _classFixture.OwnerUserId,
                     name: _classFixture.TestStickerSetName,
                     title: "Another Test Sticker Set",

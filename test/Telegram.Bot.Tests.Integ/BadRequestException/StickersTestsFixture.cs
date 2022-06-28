@@ -98,7 +98,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
         {
             try
             {
-                await BotClient.CreateNewStickerSetAsync(
+                await BotClient.CreateNewStaticStickerSetAsync(
                     userId: OwnerUserId,
                     name: TestStickerSetName,
                     title: "Test Sticker Set",
@@ -110,13 +110,11 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             {
                 await DeleteStickersAsync();
             }
-
-
         }
 
         private async Task AddStickersAsynd()
         {
-            await BotClient.AddStickerToSetAsync(
+            await BotClient.AddStaticStickerToSetAsync(
                 userId: OwnerUserId,
                 name: TestStickerSetName,
                 pngSticker: UploadedStickers.Last().FileId,
@@ -124,7 +122,7 @@ namespace Telegram.Bot.Tests.Integ.Stickers
             );
 
             System.IO.Stream stream = System.IO.File.OpenRead(Constants.PathToFile.Photos.Vlc);
-            await BotClient.AddStickerToSetAsync(
+            await BotClient.AddStaticStickerToSetAsync(
                 userId: OwnerUserId,
                 name: TestStickerSetName,
                 pngSticker: stream,
